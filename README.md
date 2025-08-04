@@ -33,6 +33,10 @@ Por último, deverá ser feito um menu interativo com as seguintes ações imple
 3. Listar veículos
 4. Encerrar
 
+## Melhorias e Evolução do Projeto
+   
+Após a conclusão da proposta inicial, apliquei diversas melhorias no código para aprofundar meus conhecimentos em C# e boas práticas de desenvolvimento. O objetivo principal é tornar o código mais robusto, flexível e orientado a objetos, preparando o projeto para conceitos mais avançados.
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+Tratamento de Exceções: Implementei o uso de decimal.TryParse() e int.TryParse() para validar a entrada do usuário. Isso garante que o programa não irá travar caso o usuário digite um valor inválido, como texto em vez de números. A principal vantagem é tornar a aplicação mais robusta e melhorar a experiência do usuário.
+
+
