@@ -7,7 +7,7 @@ namespace DesafioFundamentos.Models
     {
         private decimal precoInicial = 0;
         private decimal precoPorHora = 0;
-        private List<string> veiculos = new List<string>();
+        private List<Veiculo> veiculos = new List<Veiculo>();
 
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
@@ -20,11 +20,13 @@ namespace DesafioFundamentos.Models
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             string placa = Console.ReadLine();
 
-            if(veiculos.Any(x => x.ToUpper() == placa.ToUpper())){
-                Console.WriteLine("Veiculo já consta no estacionamento");
-            } else
+            if(veiculos.Any(v => v.Placa == placa.ToUpper()))
             {
-                veiculos.Add(placa);
+                Console.WriteLine("Veiculo já consta no estacionamento");
+            }
+            else
+            {
+                veiculos.Add(new Veiculo(placa.ToUpper())); 
             }
         }
 
@@ -34,8 +36,10 @@ namespace DesafioFundamentos.Models
             Console.WriteLine("Digite a placa do veículo que você deseja remover: ");
             string placa = Console.ReadLine();
 
+            var veiculoParaRemover = veiculos.FirstOrDefault(v => v.Placa.ToUpper() == placa.ToUpper());
+
             // Verifica se o veículo existe
-            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            if (veiculoParaRemover != null)
             {               
                 int horas = 0;
                 decimal valorTotal = 0; 
@@ -45,9 +49,9 @@ namespace DesafioFundamentos.Models
 
                 valorTotal = precoInicial + (precoPorHora * horas);
                
-                veiculos.Remove(placa);
+                veiculos.Remove(veiculoParaRemover);
 
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
+                Console.WriteLine($"O veículo {veiculoParaRemover.Placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
             else
             {
@@ -60,11 +64,8 @@ namespace DesafioFundamentos.Models
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                
-                foreach(string placa in veiculos)
-                {
-                    Console.WriteLine(placa);
-                }
+
+                veiculos.ForEach(v => Console.WriteLine($"Placa: {v.Placa} "));
             }
             else
             {
