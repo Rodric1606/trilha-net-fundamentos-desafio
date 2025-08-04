@@ -10,14 +10,34 @@ internal class Program
         decimal precoInicial = 0;
         decimal precoPorHora = 0;
 
-        Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                          "Digite o preço inicial:");
-        precoInicial = Convert.ToDecimal(Console.ReadLine());
+        Console.WriteLine("-----------------------------------------------------");
+        Console.WriteLine("Seja bem vindo ao sistema de estacionamento!");
+        Console.WriteLine("-----------------------------------------------------");
+        Console.WriteLine();
+        Console.Write("Digite o preço inicial: ");
 
-        Console.WriteLine("Agora digite o preço por hora:");
-        precoPorHora = Convert.ToDecimal(Console.ReadLine());
+        string inputPrecoInicial = Console.ReadLine();
 
-        // Instancia a classe Estacionamento, já com os valores obtidos anteriormente
+        while(!decimal.TryParse(inputPrecoInicial, out precoInicial))
+        {
+            Console.WriteLine("Valor inválido. Por favor digite um número para o preço inicial: ");
+            Console.Write("Digite o preço inicial: ");
+            inputPrecoInicial = Console.ReadLine();
+        }
+        precoInicial = Convert.ToDecimal(precoInicial.ToString("F2")); 
+
+        Console.Write("Agora digite o preço por hora: ");
+        string inputPrecoHora = Console.ReadLine();
+
+        while(!decimal.TryParse(inputPrecoHora, out precoPorHora))
+        {
+            Console.WriteLine("Valor inválido. Por favor digite um número para o preço por hora");
+            Console.Write("Digite o preço por hora: ");
+            inputPrecoHora = Console.ReadLine();
+        }
+        precoPorHora = Convert.ToDecimal(precoPorHora.ToString("F2")); 
+
+          // Instancia a classe Estacionamento, já com os valores obtidos anteriormente
         Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
 
         string opcao = string.Empty;
