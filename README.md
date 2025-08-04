@@ -39,4 +39,5 @@ Após a conclusão da proposta inicial, apliquei diversas melhorias no código p
 
 Tratamento de Exceções: Implementei o uso de decimal.TryParse() e int.TryParse() para validar a entrada do usuário. Isso garante que o programa não irá travar caso o usuário digite um valor inválido, como texto em vez de números. A principal vantagem é tornar a aplicação mais robusta e melhorar a experiência do usuário.
 
+Encapsulamento e Criação de uma Classe Veiculo: Em vez de usar uma simples lista de strings para armazenar as placas, criei uma nova classe chamada Veiculo. Esta classe agrupa informações relacionadas, como a Placa do veículo. A lista de veículos na classe Estacionamento agora armazena objetos do tipo Veiculo.
 
